@@ -1,0 +1,18 @@
+task A {
+	run splitData.py (3, max)
+}
+
+task B {
+	run count.py (max, max)
+
+	@ parallel
+}
+
+task C {
+	run aggregate.py (3, 4)
+	@ parallel, reduce
+}
+
+
+edge A -> B
+edge B->C
